@@ -10,6 +10,8 @@ Pet adoption API using resources from Petfinder API
 DATE | PROGRESS | BLOCKERS | GOALS
 ------ | ------ | ------ | ------ |
 07/06/22 | Created folder structures. Created user and pet models. | None | Connect to DB. Create routes and controllers. |
+07/07/22 | Connect to DB. CRUD for pet and user | None | Connect to favorites. |
+
 
 ***
 

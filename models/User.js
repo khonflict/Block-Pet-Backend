@@ -23,7 +23,13 @@ const userSchema = new Schema ({
         minlength: 5,
         required: true
     },
-    favorites: []
+    active: Boolean,
+    favorites: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Pet'
+        }
+    ]
 }, {
     timestamps: true
 })
