@@ -7,16 +7,20 @@ require('./config/database')
 // MIDDLEWARE //
 app.use(express.json())
 
+// Check if token and 
+app.use(require('./config/checkToken'))
+
 // ROUTES //
-// Pets 
-app.use('/api/v1/pets', require('./routes/api/pets.js'))
-// Users 
+
+// Users //
 app.use('/api/v1/users', require('./routes/api/users.js'))
-
-
+// Protect API rountes below from unauthorized users
+const ensureLoggedIn = require('./config/ensureLoggedIn')
+// Pets //
+app.use('/api/v1/pets', ensureLoggedIn, require('./routes/api/pets.js'))
 
 
 // PORT //
 const port = 6000
 
-app.listen(port, () => console.log(`Express app runnning on ${port}`))
+app.listen(port, () => console.log(`Express app runnning on port ${port}`))

@@ -22,12 +22,13 @@ const petSchema = new Schema ({
         type: String,
         required: true
     },
-    about: {
-        type: String,
-        requried: true
-    },
+    about: String,
     image: String,
-    location: String,
+    dob: Number,
+    gotchaDate: Number,
+    medication: String,
+    vet: String,
+    notes: String,
   
 }, {
     timestamps: true
