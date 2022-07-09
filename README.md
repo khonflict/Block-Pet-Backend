@@ -20,8 +20,9 @@ DATE | PROGRESS | BLOCKERS | GOALS
 
 1. Express
 2. Mongoose
-3. bcrypt
-4. jsonwebtoken
+3. cors
+4. bcrypt
+5. jsonwebtoken
 
 ***
 

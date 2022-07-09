@@ -1,6 +1,6 @@
 const Pet = require('../../models/Pet')
 
-// Find all pets //
+// Find pets //
 const index = async (req, res) => {
     try {
         const pets = await Pet.find({})

@@ -8,8 +8,7 @@ router.post('/', usersCtrl.create)
 // POST /api/v1/users/login
 router.post('/login', usersCtrl.login)
 
-// The below routes should not be accessible to unauthorized users
-
+// The below routes are not accessible to unauthorized users
 // GET /api/v1/users/:id
 router.get('/:id', ensureLoggedIn, usersCtrl.show)
 // GET /api/v1/users/:id/favorites

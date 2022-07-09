@@ -15,19 +15,18 @@ const create = async (req, res) => {
 // Login
 const login = async (req, res) => {
     try {
-        // Find user by email
+        // Locates user by email
         const user = await User.findOne({
             email: req.body.email
         })
 
-        // Throw error if user is not found
+        // Sends error if user is not located
         if(!user) throw new Error()
 
-        // compare() takes the user's input from req.body, hashes it, and compares it to our db hashed pw
-        // compare() incorporates the encoding process in the db hashed pw and uses the same encoding process with the user's input
+        // compare() takes user's input and compares it to database while also incorporating encoding process
         const match = await bcrypt.compare(req.body.password, user.password)
 
-        // If the pws don't match throw error
+        // If password doesn't match send error
         if(!match) throw new Error()
 
         res.status(200).json(createJWT(user))
@@ -52,8 +51,7 @@ const show = async (req, res) => {
 // Update a user
 const update = async (req, res) => {
     try {
-        // Pre and post save() hooks are not executed on update(), findOneAndUpdate(), etc.
-        // We need to handle our password update hash here and not as a pre-hook
+        // Pre/post save() hooks are not executed on update(), findOneAndUpdate(), etc. so password update hash should be handled here
         req.body.password = await bcrypt.hash(req.body.password, 10)
         const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true})
         res.status(200).json(updatedUser)
@@ -73,7 +71,7 @@ const getFavorites = async (req, res) => {
 }
 
 // Helper Function
-// JWT is created with a secret key and that secret key is private to you which means you will never reveal that to the public or inject inside the JWT token.
+// JWT is created with a secret key and that secret key is private to you which means it should never be revealed
 const createJWT = user => {
     return jwt.sign(
         // payload
