@@ -25,19 +25,19 @@ const userSchema = new Schema ({
         minlength: 5,
         required: true
     },
-    active: Boolean,
     favorites: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Pet'
         }
-    ]
+    ],
+    active: Boolean,
 }, {
     timestamps: true,
     toJSON: {
         // ret is the JSON'ed User Document
         transform: function(doc, ret) {
-            // We don't want to return the password back to the client
+            // Prevents password from being returned to user
             delete ret.password
             return ret
         }
@@ -45,7 +45,7 @@ const userSchema = new Schema ({
 })
 
 userSchema.pre('save', async function(next) {
-    // This will only hash the password for our newly created user
+    // This only hash passwords for newly created user
     this.password = await bcrypt.hash(this.password, saltRounds)
     return next()
 })

@@ -5,12 +5,12 @@ module.exports = (req, res, next) => {
     let token = req.get('Authorization') || process.env.TESTING_TOKEN
 
     if(token) {
-        // Space between the word Bearer and our token is intentional 
+        // Space between the word Bearer and our token is intentional and needed 
         token = token.replace('Bearer ', '')
 
         // Validating token  
         jwt.verify(token, process.env.SECRET, (err, decoded) => {
-            console.log(decoded)
+            // console.log(decoded)
             req.user = err ? null : decoded.user
 
             // Expiration

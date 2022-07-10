@@ -23,6 +23,8 @@ const create = async (req, res) => {
 // Update a pet //
 const update = async (req, res) => {
     try {
+        console.log('req', req.params.id)
+        console.log('red.body', req.body)
         const updatedPet = await Pet.findByIdAndUpdate(req.params.id, req.body, {new: true})
         res.status(200).json(updatedPet)
     } catch(e) {

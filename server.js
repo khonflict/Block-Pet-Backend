@@ -15,15 +15,15 @@ app.use(require('./config/checkToken'))
 // ROUTES //
 
 // Users //
-app.use('/api/v1/users', require('./routes/api/users.js'))
+app.use('/api/v1/users', require('./routes/api/users'))
 
 // Protect API rountes below from unauthorized users
 const ensureLoggedIn = require('./config/ensureLoggedIn')
 
 // Pets //
-app.use('/api/v1/pets', ensureLoggedIn, require('./routes/api/pets.js'))
+app.use('/api/v1/pets', ensureLoggedIn, require('./routes/api/pets'))
 
 // PORT //
-const port = 6000
+const port = 3005
 
 app.listen(port, () => console.log(`Express app runnning on port ${port}`))

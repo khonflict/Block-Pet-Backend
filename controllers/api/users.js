@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const create = async (req, res) => {
     try {
         const createdUser = await User.create(req.body)
-        res.status(200).json(createdUser)
+        res.status(200).json(createJWT(createdUser))
     } catch(e) {
         res.status(400).json({msg: e.message})
     }
@@ -15,12 +15,12 @@ const create = async (req, res) => {
 // Login
 const login = async (req, res) => {
     try {
-        // Locates user by email
+        // Find user by email
         const user = await User.findOne({
             email: req.body.email
         })
 
-        // Sends error if user is not located
+        // Sends error if user is not Found
         if(!user) throw new Error()
 
         // compare() takes user's input and compares it to database while also incorporating encoding process
@@ -79,7 +79,7 @@ const createJWT = user => {
         // secret
         process.env.SECRET,
         // options
-        {expiresIn: '48h'}
+        {expiresIn: '72h'}
     )
 }
 
