@@ -12,6 +12,7 @@ const index = async (req, res) => {
 
 // Create a pet //
 const create = async (req, res) => {
+    // console.log(req.body)
     try {
         const createdPet = await Pet.create(req.body)
         res.status(200).json(createdPet)

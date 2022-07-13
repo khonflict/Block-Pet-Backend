@@ -25,13 +25,13 @@ const userSchema = new Schema ({
         minlength: 5,
         required: true
     },
-    favorites: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Pet'
-        }
-    ],
-    active: Boolean,
+    // favorites: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'Pet'
+    //     }
+    // ],
+    // active: Boolean,
 }, {
     timestamps: true,
     toJSON: {

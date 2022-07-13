@@ -14,22 +14,17 @@ const petSchema = new Schema ({
         type: String,
         required: true
     },
-    age: {
-        type: String,
-        required: true
-    },
     gender: {
         type: String,
         required: true
     },
-    about: String,
-    image: String,
-    dob: Number,
-    gotchaDate: Number,
+    dob: String,
+    age: String,
+    adoption: String,
     medication: String,
     vet: String,
+    image: String,
     notes: String,
-  
 }, {
     timestamps: true
 })

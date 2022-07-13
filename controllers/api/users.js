@@ -29,7 +29,7 @@ const login = async (req, res) => {
         // If password doesn't match send error
         if(!match) throw new Error()
 
-        res.status(200).json(createJWT(user))
+        res.status(200).json(createJWT(createdUser))
     } catch(e) {
         res.status(401).json({
             msg: e.message,
